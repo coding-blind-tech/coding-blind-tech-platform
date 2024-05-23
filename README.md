@@ -7,6 +7,14 @@
    npm create vite@latest
    ```
 2. Updated vite config to ouse server port 3000.
+3. Installed material UI:
+   ```
+   npm install @mui/material @types/material-ui
+   ```
+4. Installed @emotion/styled @emotion/react:
+   ```
+   npm install @emotion/styled @emotion/react
+   ```
 
 
 
