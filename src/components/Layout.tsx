@@ -2,13 +2,15 @@ import React from 'react';
 import NavBar from './NavBar';
 import Header from './Header';
 import Footer from './Footer';
-import MainContent from './MainContent';
+import { Outlet } from 'react-router-dom';
 
 const Layout: React.FC = () => (
   <div>
     <NavBar />
     <Header />
-    <MainContent />
+    <main>
+      <Outlet />
+    </main>
     <Footer />
   </div>
 );

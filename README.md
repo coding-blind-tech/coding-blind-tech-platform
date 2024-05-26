@@ -15,7 +15,19 @@
    ```
    npm install @emotion/styled @emotion/react
    ```
+5. Installed imports for `Visibility` and `VisibilityOff`.
+   ```
+   npm install @mui/icons-material
+   ```
 
+
+## React Hook Forms
+
+React Hook Forms, is the library I use for handling forms.
+
+```
+npm install react-hook-form @hookform/resolvers yup
+```
 
 
 ## Default README Information with Vite and React
