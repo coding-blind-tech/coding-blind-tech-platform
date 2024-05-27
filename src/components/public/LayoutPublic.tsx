@@ -4,10 +4,10 @@ import Header from './Header';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
 
-const Layout: React.FC = () => (
+const LayoutPublic: React.FC = () => (
   <div>
     <NavBar />
-    <Header />
+    <Header title="Welcome to Coding Blind Tech!" />
     <main>
       <Outlet />
     </main>
@@ -15,4 +15,4 @@ const Layout: React.FC = () => (
   </div>
 );
 
-export default Layout;
+export default LayoutPublic;

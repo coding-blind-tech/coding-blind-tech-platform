@@ -1,8 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Layout from './components/Layout';
-import SignIn from './pages/auth/SignIn';
-import LandingPage from './pages/LandingPage';
+
+// public 
+import LayoutPublic from './components/public/LayoutPublic';
+import SignIn from './pages/auth/public/SignIn';
+import LandingPage from './pages/public/LandingPage';
+
+// Private
+import Dashboard from './pages/private/Dashboard';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isLoggedIn = sessionStorage.getItem('loggedIn') === 'true';
@@ -12,7 +17,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 const App: React.FC = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<LayoutPublic />}>
         <Route path="signin" element={<SignIn />} />
         <Route
           path="/"

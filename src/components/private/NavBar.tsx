@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const NavBar: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const location = useLocation();
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -13,6 +14,9 @@ const NavBar: React.FC = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  // Determine whether to show the "Sign In" button based on the current route
+  const showSignIn = location.pathname !== '/signin';
 
   return (
     <AppBar position="static">
@@ -29,9 +33,11 @@ const NavBar: React.FC = () => {
           <Button color="inherit" component={RouterLink} to="/help">
             Help
           </Button>
-          <Button color="inherit" component={RouterLink} to="/signin">
-            Sign In
-          </Button>
+          {showSignIn && (
+            <Button color="inherit" component={RouterLink} to="/signin">
+              Sign In
+            </Button>
+          )}
           <Button color="inherit" component={RouterLink} to="/signup">
             Sign Up
           </Button>
@@ -68,9 +74,11 @@ const NavBar: React.FC = () => {
             <MenuItem onClick={handleClose} component={RouterLink} to="/help">
               Help
             </MenuItem>
-            <MenuItem onClick={handleClose} component={RouterLink} to="/signin">
-              Sign In
-            </MenuItem>
+            {showSignIn && (
+              <MenuItem onClick={handleClose} component={RouterLink} to="/signin">
+                Sign In
+              </MenuItem>
+            )}
             <MenuItem onClick={handleClose} component={RouterLink} to="/signup">
               Sign Up
             </MenuItem>

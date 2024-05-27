@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../../components/Header';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -51,8 +50,7 @@ const SignIn: React.FC = () => {
 
     return (
         <div>
-            <Header title="Welcome to Coding Blind Tech!" />
-            <Container component="main" maxWidth="xs">
+            <Container component="div" maxWidth="xs">
                 <Box
                     sx={{
                         marginTop: 8,
