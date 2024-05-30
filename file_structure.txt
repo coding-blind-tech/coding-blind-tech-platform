@@ -1,0 +1,33 @@
+src/
+  App.tsx
+  constants.ts
+  main.tsx
+  vite-env.d.ts
+
+  assets/
+    react.svg
+
+  components/
+    global/
+      CopyRight.tsx
+
+    layout/
+      LayoutPublic.tsx
+      LayoutPrivate.tsx
+
+    common/
+      Footer.tsx
+      Header.tsx
+      MainContent.tsx
+      NavBar.tsx
+
+  pages/
+    auth/
+      SignIn.tsx
+      Register.tsx
+
+    private/
+      Dashboard.tsx
+
+    public/
+      LandingPage.tsx

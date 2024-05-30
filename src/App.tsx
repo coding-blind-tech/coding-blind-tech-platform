@@ -1,35 +1,41 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-
-// public 
-import LayoutPublic from './components/public/LayoutPublic';
-import SignIn from './pages/auth/public/SignIn';
+import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
+import LayoutPublic from './components/layouts/LayoutPublic';
+import LayoutPrivate from './components/layouts/LayoutPrivate';
 import LandingPage from './pages/public/LandingPage';
-
-// Private
+import SignIn from './pages/auth/SignIn';
+import Register from './pages/auth/Register';
+import Confirmation from './pages/auth/Confirmation';
 import Dashboard from './pages/private/Dashboard';
 
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const App: React.FC = () => {
   const isLoggedIn = sessionStorage.getItem('loggedIn') === 'true';
-  return isLoggedIn ? <>{children}</> : <Navigate to="/signin" />;
-};
 
-const App: React.FC = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<LayoutPublic />}>
-        <Route path="signin" element={<SignIn />} />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <LandingPage />
-            </ProtectedRoute>
-          }
-        />
-      </Route>
-    </Routes>
-  </Router>
-);
+  const PublicRoute: React.FC = () => (
+    <LayoutPublic>
+      <Outlet />
+    </LayoutPublic>
+  );
+
+  const PrivateRoute: React.FC = () => (
+    isLoggedIn ? <LayoutPrivate><Outlet /></LayoutPrivate> : <Navigate to="/signin" />
+  );
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<PublicRoute />}>
+          <Route index element={<LandingPage />} />
+          <Route path="signin" element={isLoggedIn ? <Navigate to="/private/dashboard" /> : <SignIn />} />
+          <Route path="register" element={isLoggedIn ? <Navigate to="/private/dashboard" /> : <Register />} />
+          <Route path="confirmation" element={<Confirmation />} />
+        </Route>
+        <Route path="/private" element={<PrivateRoute />}>
+          <Route path="dashboard" element={<Dashboard />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;

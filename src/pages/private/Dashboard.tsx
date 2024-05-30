@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from '../../components/private/Header';
+import Header from '../../components/common/Header';
 
 const Dashboarde: React.FC = () => {
     return (

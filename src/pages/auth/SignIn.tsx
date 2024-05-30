@@ -36,11 +36,12 @@ const SignIn: React.FC = () => {
     };
 
     const handleSignIn = (data: IFormInput) => {
-        // Replace with actual sign-in logic
+        // Not production safe
+        // Only for development right now
         if (data.email === 'user@example.com' && data.password === 'password') {
             sessionStorage.setItem('loggedIn', 'true');
             console.log('Sign-in successful');
-            navigate('/'); // Redirect to the landing page
+            navigate('/private/dashboard');
         } else {
             console.error('Invalid email or password');
         }
